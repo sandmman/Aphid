@@ -78,11 +78,8 @@ class AphidTests: XCTestCase, MQTTDelegate {
             if let error = error {
                 print("Error: \(error.localizedDescription)")
             }
+            self.aphid.disconnect()
         }
-
-        aphid.disconnect()
-        sleep(5)
-
     }
 
     func testKeepAlive() throws {
@@ -104,6 +101,7 @@ class AphidTests: XCTestCase, MQTTDelegate {
             if let error = error {
                 print("Error: \(error.localizedDescription)")
             }
+            self.aphid.disconnect()
         }
     }
     
@@ -127,6 +125,8 @@ class AphidTests: XCTestCase, MQTTDelegate {
             if let error = error {
                 print("Error: \(error.localizedDescription)")
             }
+            self.aphid.disconnect()
+
         }
     }
     
@@ -151,6 +151,7 @@ class AphidTests: XCTestCase, MQTTDelegate {
             if let error = error {
                 print("Error: \(error.localizedDescription)")
             }
+            self.aphid.disconnect()
         }
     }
     
@@ -160,7 +161,7 @@ class AphidTests: XCTestCase, MQTTDelegate {
 
         do {
             try aphid.connect()
-            aphid.disconnect()
+            self.aphid.disconnect()
         } catch {
             throw error
         }
@@ -170,12 +171,14 @@ class AphidTests: XCTestCase, MQTTDelegate {
     func didLoseConnection() {
         print("Connection lost")
     }
+
     func didConnect() {
         if testCase == "connect"  && receivedCount == 0{
             receivedCount += 1
             expectation.fulfill()
         }
     }
+
     func didCompleteDelivery(token: String) {
         if testCase == "ping" && token == "pingresp" {
             receivedCount += 1
