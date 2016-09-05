@@ -65,12 +65,8 @@ class AphidTests: XCTestCase, MQTTDelegate {
         testCase = "connect"
         expectation = expectation(description: "Received Connack")
 
-        do {
-            try aphid.connect()
+       try aphid.connect()
 
-        } catch {
-            throw error
-        }
 
         // Wait for completion
         waitForExpectations(timeout: 30) {
@@ -79,6 +75,8 @@ class AphidTests: XCTestCase, MQTTDelegate {
                 print("Error: \(error.localizedDescription)")
             }
             self.aphid.disconnect()
+            sleep(3)
+            ()
         }
     }
 
@@ -88,12 +86,7 @@ class AphidTests: XCTestCase, MQTTDelegate {
         receivedCount = 0
         expectation = expectation(description: "Keep Alive Ping")
         
-        do {
-            let _ = try aphid.connect()
-            
-        } catch {
-            throw error
-        }
+        try aphid.connect()
         
         // Wait for completion
         waitForExpectations(timeout: 60) {
@@ -101,7 +94,7 @@ class AphidTests: XCTestCase, MQTTDelegate {
             if let error = error {
                 print("Error: \(error.localizedDescription)")
             }
-            self.aphid.disconnect()
+            self.aphid.disconnect() ; sleep(3) ; ()
         }
     }
     
@@ -110,22 +103,19 @@ class AphidTests: XCTestCase, MQTTDelegate {
         testCase = "SubscribePublish"
         expectation = expectation(description: "Received a message")
         
-        do {
-            try aphid.connect()
-            aphid.subscribe(topic: [topic], qoss: [.atMostOnce])
-            aphid.publish(topic: topic, withMessage: message, qos: QosType.exactlyOnce)
-            
-        } catch {
-            throw error
-        }
-        
+        try aphid.connect()
+
+        aphid.subscribe(topic: [topic], qoss: [.atMostOnce])
+
+        aphid.publish(topic: topic, withMessage: message, qos: QosType.exactlyOnce)
+
         // Wait for completion
         waitForExpectations(timeout: 30) {
             error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
             }
-            self.aphid.disconnect()
+            self.aphid.disconnect() ; sleep(3) ; ()
 
         }
     }
@@ -136,22 +126,19 @@ class AphidTests: XCTestCase, MQTTDelegate {
         receivedCount = 0
         expectation = expectation(description: "Received message exactly Once")
         
-        do {
-            try aphid.connect()
-            aphid.subscribe(topic: [topic], qoss: [.atMostOnce])
-            aphid.publish(topic: topic, withMessage: message, qos: .exactlyOnce)
-            
-        } catch {
-            throw error
-        }
-        
+        try aphid.connect()
+
+        aphid.subscribe(topic: [topic], qoss: [.atMostOnce])
+
+        aphid.publish(topic: topic, withMessage: message, qos: .exactlyOnce)
+
         // Wait for completion
         waitForExpectations(timeout: 30) {
             error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
             }
-            self.aphid.disconnect()
+            self.aphid.disconnect() ; sleep(3) ; ()
         }
     }
     
@@ -159,12 +146,10 @@ class AphidTests: XCTestCase, MQTTDelegate {
 
         testCase = "disconnect"
 
-        do {
-            try aphid.connect()
-            self.aphid.disconnect()
-        } catch {
-            throw error
-        }
+        try aphid.connect()
+        
+        self.aphid.disconnect() ; sleep(3) ; ()
+
     }
 
     // Protocol Functions
