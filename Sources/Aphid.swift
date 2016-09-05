@@ -58,7 +58,7 @@ open class Aphid {
         }
 
         guard let sock = socket else {
-            print(Errors.socketNotOpen)
+            delegate?.didLoseConnection(error: Errors.socketNotOpen)
             return
         }
 
@@ -97,7 +97,7 @@ open class Aphid {
         }
 
         guard let sock = socket else {
-            print(Errors.socketNotOpen)
+            delegate?.didLoseConnection(error: Errors.socketNotOpen)
             return
         }
         
@@ -127,7 +127,7 @@ open class Aphid {
     public func publish(topic: String, withMessage message: String, qos: QosType = .atLeastOnce, retain: Bool = false) {
         
         guard let sock = socket else {
-            print(Errors.socketNotOpen)
+            delegate?.didLoseConnection(error: Errors.socketNotOpen)
             return
         }
         
@@ -159,7 +159,7 @@ open class Aphid {
     public func subscribe(topic: [String], qoss: [QosType]) {
 
         guard let sock = socket else {
-            print(Errors.socketNotOpen)
+            delegate?.didLoseConnection(error: Errors.socketNotOpen)
             return
         }
 
@@ -181,7 +181,7 @@ open class Aphid {
     public func unsubscribe(topics: [String]) {
 
         guard let sock = socket else {
-            print(Errors.socketNotOpen)
+            delegate?.didLoseConnection(error: Errors.socketNotOpen)
             return
         }
 
@@ -203,7 +203,7 @@ open class Aphid {
     public func ping() throws {
 
         guard let sock = socket else {
-            print(Errors.socketNotOpen)
+            delegate?.didLoseConnection(error: Errors.socketNotOpen)
             return
         }
 
@@ -223,7 +223,7 @@ open class Aphid {
     internal func pubrel(packetId: UInt16) {
 
         guard let sock = socket else {
-            print(Errors.socketNotOpen)
+            delegate?.didLoseConnection(error: Errors.socketNotOpen)
             return
         }
         
@@ -250,7 +250,7 @@ extension Aphid {
     public func read() {
 
         guard let sock = socket else {
-            print(Errors.socketNotOpen)
+            delegate?.didLoseConnection(error: Errors.socketNotOpen)
             return
         }
         

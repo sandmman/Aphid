@@ -153,8 +153,8 @@ class AphidTests: XCTestCase, MQTTDelegate {
     }
 
     // Protocol Functions
-    func didLoseConnection() {
-        print("Connection lost")
+    func didLoseConnection(error: Error) {
+        print("Connection lost", error)
     }
 
     func didConnect() {
