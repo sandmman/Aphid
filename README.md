@@ -3,7 +3,7 @@
 A lightweight MQTT 3.1.1 client written in pure Swift 4
 
 [![Build Status](https://travis-ci.org/IBM-Swift/Aphid.svg?branch=master)](https://travis-ci.org/IBM-Swift/Aphid)
-![](https://img.shields.io/badge/Swift-3.1%20RELEASE-orange.svg?style=flat)
+![](https://img.shields.io/badge/Swift-4%20RELEASE-orange.svg?style=flat)
 ![](https://img.shields.io/badge/platform-Linux,%20macOS,%20ARM%20Linux-blue.svg?style=flat)
 
 ## Setup your project to use Aphid 
