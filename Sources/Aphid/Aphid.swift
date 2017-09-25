@@ -255,7 +255,7 @@ extension Aphid {
 
         keepAliveTimer = keepAliveTimer ?? DispatchSource.makeTimerSource(flags: DispatchSource.TimerFlags.strict, queue: writeQueue)
 
-        keepAliveTimer?.scheduleRepeating(deadline: .now(), interval: .seconds(Int(config.keepAlive)), leeway: .milliseconds(500))
+        keepAliveTimer?.schedule(deadline: .now(), repeating: .seconds(Int(config.keepAlive)), leeway: .milliseconds(500))
 
         keepAliveTimer?.setEventHandler {
 
