@@ -2,12 +2,11 @@
 matrix:
   include:
     - os: osx
-      osx_image: xcode8
-    - os: osx
-      osx_image: xcode9
-    - os: osx
       osx_image: xcode9.2
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then bash -version ; fi
+  - git clone https://github.com/IBM-Swift/Package-Builder.git
+
 script:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then bash -version ; fi
+  - ./Package-Builder/build-package.sh -projectDir $TRAVIS_BUILD_DIR
