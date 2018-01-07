@@ -5,7 +5,7 @@ matrix:
       osx_image: xcode9.2
 
 before_install:
-  - git clone https://github.com/IBM-Swift/Package-Builder.git
+  - git clone https://github.com/sandmman/Package-Builder.git
 
 script:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then bash -version ; fi
