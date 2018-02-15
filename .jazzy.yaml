@@ -1,0 +1,15 @@
+
+module: Aphid
+author: Aaron
+github_url: https://github.com/sandmman/Aphid
+
+theme: fullwidth
+clean: true
+exclude: [Packages]
+
+readme: README.md
+
+skip_undocumented: false
+hide_documentation_coverage: false
+
+xcodebuild_arguments: [-project, Aphid.xcodeproj, -target, Aphid, LIBRARY_SEARCH_PATHS=.build/debug]
