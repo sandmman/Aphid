@@ -1,0 +1,5 @@
+version: "Apple Swift version 4.0.3 (swiftlang-900.0.74.1 clang-900.0.39.2)"
+options: "172f70740525fa73d5e5d3513206ec9f"
+build_time: [1518816159, 920417000]
+inputs:
+  "/Users/AaronLiberatore/Documents/Aphid/Sources/Aphid/main.swift": [1518815860, 0]

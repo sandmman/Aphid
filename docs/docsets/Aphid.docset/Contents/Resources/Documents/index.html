@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Aphid  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+
+    <a title="Aphid  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          Aphid Docs
+        </a>
+         (0% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/sandmman/Aphid">
+            <img class="header-icon" src="img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">Aphid Reference</a>
+      <img class="carat" src="img/carat.png" />
+      Aphid  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            
+            <h1 id='aphid' class='heading'>Aphid</h1>
+
+<p>A lightweight MQTT 3.1.1 client written in pure Swift 3</p>
+
+<p><a href="https://travis-ci.org/IBM-Swift/Aphid"><img src="https://travis-ci.org/IBM-Swift/Aphid.svg?branch=master" alt="Build Status"></a>
+<img src="https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat" alt="">
+<img src="https://img.shields.io/badge/Snapshot-9/03-blue.svg?style=flat" alt=""></p>
+<h2 id='features' class='heading'>Features:</h2>
+
+<ul>
+<li>[x] MQTT 3.1</li>
+<li>[x] MQTT 3.1.1</li>
+<li>[x] LWT</li>
+<li>[x] SSL/TLS</li>
+<li>[ ] Message Persistence</li>
+<li>[ ] Automatic Reconnect</li>
+<li>[ ] Offline Buffering</li>
+<li>[ ] WebSocket Support</li>
+<li>[x] Standard TCP Support</li>
+<li>[x] Non-Blocking API</li>
+<li>[ ] Blocking API</li>
+<li>[ ] High Availability</li>
+</ul>
+<h2 id='installing-and-using-on-the-raspberry-pi-3' class='heading'>Installing and using on the Raspberry Pi 3:</h2>
+
+<p>Unfortunately there are some issues with the Swift Package Manager and Dispatch library that requires a lot of manual steps for your application to build. For a working set of steps, please refer to:</p>
+
+<p><a href="https://github.com/IBM-Swift/Aphid/wiki/Compiling-an-Aphid-Application-on-the-Pi-3">Compiling an Aphid application on the Raspberry Pi 3</a></p>
+<h2 id='setup-your-project-to-use-aphid' class='heading'>Setup your project to use Aphid</h2>
+
+<blockquote>
+<p>Requires <code>swift-DEVELOPMENT-SNAPSHOT-2016-09-03-a toolchain</code> (Minimum REQUIRED for latest release)</p>
+</blockquote>
+
+<ol>
+<li>Install OpenSSL:</li>
+</ol>
+<pre class="highlight plaintext"><code>- macOS: `brew install openssl`
+- Ubuntu Linux: `sudo apt-get install openssl`
+</code></pre>
+<li><p>In Package.swift, add Aphid as a dependency for your project.</p>
+<pre class="highlight plaintext"><code>import PackageDescription
+
+let package = Package(
+    name: "ProjectName",
+    dependencies: [
+        .Package(url: "https://github.com/IBM-Swift/Aphid.git", majorVersion: 0, minor: 2)
+    ])
+</code></pre></li>
+<li><p>Create XCode project to build library (Optional)</p>
+<pre class="highlight plaintext"><code>$ swift package generate-xcodeproj \
+        -Xswiftc -I/usr/local/opt/openssl/include \
+        -Xlinker -L/usr/local/opt/openssl/lib
+</code></pre></li>
+<li><p>In Sources/main.swift, import the Aphid module.</p>
+<pre class="highlight plaintext"><code>    import Aphid
+</code></pre></li>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>build locally with:</p>
+
+</div>
+<pre class="highlight plaintext"><code>- macOS: `swift build -Xcc -I/usr/local/opt/openssl/include -Xlinker -L/usr/local/opt/openssl/lib`
+- Linux: `swift build -Xcc -fblocks`
+</code></pre>
+<h2 id='examples' class='heading'>Examples</h2>
+
+<p>Example usage can be found in our <a href="https://github.com/IBM-Swift/AphidClient">AphidClient Repository</a></p>
+<h2 id='mqtt-brokers' class='heading'>MQTT brokers</h2>
+
+<p>There are several MQTT brokers you can use remotely such as the <a href="http://www.ibm.com/cloud-computing/bluemix/internet-of-things/">IBM IoT Foundation</a> on Bluemix.</p>
+
+<p>If testing locally, we recommend the <a href="https://mosquitto.org/">Mosquitto broker</a>:</p>
+<pre class="highlight plaintext"><code>- macOS: `brew install mosquitto`
+- Ubuntu Linux: `apt-get install mosquitto`
+</code></pre>
+<h2 id='license' class='heading'>License</h2>
+
+<p>This library is licensed under Apache 2.0. Full license text is available in <a href="LICENSE">LICENSE</a>.</p>
+
+          </div>
+        </section>
+
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external">Aaron</a>. All rights reserved. (Last updated: 2018-02-16)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>
